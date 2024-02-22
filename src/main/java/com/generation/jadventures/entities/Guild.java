@@ -3,6 +3,8 @@ package com.generation.jadventures.entities;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -37,4 +39,8 @@ public class Guild
 
     @OneToMany(mappedBy = "guild", fetch = FetchType.EAGER)
     private List<Quest> posted_quests;
+
+  
+
+
 }
