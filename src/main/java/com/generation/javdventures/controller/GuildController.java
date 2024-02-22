@@ -37,6 +37,7 @@ public class GuildController {
             return conv.GuildWNoQuest(op.get());
     }
 
+
     @GetMapping("/guilds/{id}/quest")
     public GuildWQuest getOneWithQuest(@PathVariable Integer id)
     {

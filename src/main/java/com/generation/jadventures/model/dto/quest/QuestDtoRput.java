@@ -1,14 +1,16 @@
 package com.generation.jadventures.model.dto.quest;
 
+import com.generation.jadventures.entities.Quest;
+
 import lombok.Data;
 import lombok.experimental.SuperBuilder;
 
 @SuperBuilder
 @Data
 
-public class QuestDtoR extends QuestDtoBase
+public class QuestDtoRput extends QuestDtoBase
 {
-    public QuestDtoR(){}
-    private Integer id;
     private Integer guild_id;
+    private Integer id;
+    public QuestDtoRput(){}
 }
