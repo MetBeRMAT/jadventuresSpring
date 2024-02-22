@@ -6,3 +6,4 @@ public interface GuildRepository extends JpaRepository<Guild,Integer>
 {
 
 }
+
