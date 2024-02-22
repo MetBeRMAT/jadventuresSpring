@@ -38,7 +38,7 @@ public class GuildController {
     }
 
     @GetMapping("/guild/{id}/quest")
-    public GuildWQuest getOneWithQuest(@PathVariable Integer id)
+    public GuildDtoWQuest getOneWithQuest(@PathVariable Integer id)
     {
         Optional<Guild> op = repo.findById(id);
 

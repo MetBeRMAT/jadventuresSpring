@@ -5,10 +5,8 @@ import lombok.experimental.SuperBuilder;
 
 @SuperBuilder
 @Data
-
-public class QuestDtoR extends QuestDtoBase
+public class QuestDtoRpost extends QuestDtoBase
 {
-    public QuestDtoR(){}
-    private Integer id;
+    public QuestDtoRpost(){}
     private Integer guild_id;
 }

@@ -10,6 +10,4 @@ public class GuildDtoR extends GuildDtoBase
 {
     public GuildDtoR(){}
     private Integer id;
-    private Integer guild_id;
-
 }
