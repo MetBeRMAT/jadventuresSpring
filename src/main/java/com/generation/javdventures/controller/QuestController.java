@@ -12,8 +12,15 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.generation.jadventures.entities.Guild;
 import com.generation.jadventures.entities.Quest;
+import com.generation.jadventures.model.dto.quest.QuestDtoBase;
+import com.generation.jadventures.model.dto.quest.QuestDtoR;
+import com.generation.jadventures.model.dto.quest.QuestDtoRpost;
+import com.generation.jadventures.model.dto.quest.QuestDtoRput;
+import com.generation.jadventures.model.repositories.GuildRepository;
 import com.generation.jadventures.model.repositories.QuestRepository;
+import com.generation.jadventures.model.service.GuildConverter;
 import com.generation.jadventures.model.service.QuestConverter;
 
 @RestController
@@ -23,33 +30,37 @@ public class QuestController {
     QuestRepository repo;
     @Autowired
     QuestConverter conv;
+    @Autowired
+    GuildRepository gRepo;
 
     @GetMapping("/quests")
-    public List<Quest> getAll()
+    public List<QuestDtoBase> getAll()
     {
-        return repo.findAll().stream().map(d -> conv.quest(d)).toList();
+        return repo.findAll().stream().map(d -> conv.questToDtoBase(d)).toList();
     }
 
     @PostMapping("/quests")
-    public Quest insert (@RequestBody QuestDtoRpost dto)
+    public QuestDtoR insert (@RequestBody QuestDtoRpost dto)
     {
-        Quest d = conv.dtoRpostToQuest(dto);
-        return conv.quest(repo.save(d));
+        Quest q = conv.dtoRpostToQuest(dto);
+        return conv.questToDtoR(repo.save(q));
     }
 
     @PutMapping("/quests")
-    public Quest update(@RequestBody QuestDtoRput dto)
+    public QuestDtoR updateQuest(@RequestBody QuestDtoRput dto)
     {
-        Quest d = conv.dtoRputToQuest(dto);
-        return conv.quest(repo.save(d));
+        Quest q = conv.dtoRputToQuest(dto);
+        return conv.questToDtoR(repo.save(q));
     }
 
     @PutMapping("/quests/{id}")
-    public Quest updateWithId(@RequestBody QuestDtoRput dto,@PathVariable Integer id)
+    public QuestDtoR updateWithId(@RequestBody QuestDtoRput dto,@PathVariable Integer id)
     {
-        dto.setId(id);
-        Quest d = conv.dtoRputToQuest(dto);
-        return conv.quest(repo.save(d));
+        
+        Quest q = conv.dtoRputToQuest(dto);
+        q.setId(id);
+        
+        return conv.questToDtoR(repo.save(q));
     }
 
     @DeleteMapping("/quests/{id}")
@@ -57,9 +68,5 @@ public class QuestController {
     {
         repo.deleteById(id);
     }
-
-
-    
-
 
 }
