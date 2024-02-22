@@ -14,7 +14,7 @@ import com.generation.jadventures.model.repositories.GuildRepository;
 
 @RestController
 @CrossOrigin
-
+ 
 public class GuildController {
     @Autowired
     GuildRepository repo;
