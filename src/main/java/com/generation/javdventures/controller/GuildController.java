@@ -14,19 +14,19 @@ import com.generation.jadventures.model.repositories.GuildRepository;
 
 @RestController
 @CrossOrigin
- 
+ //Un commentio2
 public class GuildController {
     @Autowired
     GuildRepository repo;
     @Autowired
     GuildConverter conv;
-
-    @GetMapping("/guild")
+   
+    @GetMapping("/guilds")
     public List<Guild> getAll() {
         return repo.findAll();
     }
 
-    @GetMapping("/guild/{id}")
+    @GetMapping("/guilds/{id}")
     public GuildWNoQuest getOne(@PathVariable Integer id)
     {
         Optional<Guild> op = repo.findById(id);
@@ -37,7 +37,7 @@ public class GuildController {
             return conv.GuildWNoQuest(op.get());
     }
 
-    @GetMapping("/guild/{id}/quest")
+    @GetMapping("/guilds/{id}/quest")
     public GuildWQuest getOneWithQuest(@PathVariable Integer id)
     {
         Optional<Guild> op = repo.findById(id);
