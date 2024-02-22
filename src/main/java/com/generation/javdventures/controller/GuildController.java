@@ -20,7 +20,7 @@ public class GuildController {
     GuildRepository repo;
     @Autowired
     GuildConverter conv;
-
+   
     @GetMapping("/guilds")
     public List<Guild> getAll() {
         return repo.findAll();
