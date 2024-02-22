@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.generation.jadventures.entities.Quest;
 import com.generation.jadventures.model.repositories.QuestRepository;
+import com.generation.jadventures.model.service.QuestConverter;
 
 @RestController
 @CrossOrigin

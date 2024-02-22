@@ -10,5 +10,6 @@ public class QuestDtoR extends QuestDtoBase
 {
     public QuestDtoR(){}
     private Integer id;
+    private Integer guild_id;
      
 }

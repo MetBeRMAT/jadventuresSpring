@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.generation.jadventures.entities.Guild;
+import com.generation.jadventures.model.dto.guild.GuildDtoBase;
 import com.generation.jadventures.model.repositories.GuildRepository;
+import com.generation.jadventures.model.service.GuildConverter;
 
 @RestController
 @CrossOrigin
@@ -27,7 +29,7 @@ public class GuildController {
     }
 
     @GetMapping("/guilds/{id}")
-    public GuildWNoQuest getOne(@PathVariable Integer id)
+    public GuildDtoBase getOne(@PathVariable Integer id)
     {
         Optional<Guild> op = repo.findById(id);
 
@@ -38,7 +40,7 @@ public class GuildController {
     }
 
     @GetMapping("/guilds/{id}/quest")
-    public GuildWQuest getOneWithQuest(@PathVariable Integer id)
+    public GuildDtoWQuest getOneWithQuest(@PathVariable Integer id)
     {
         Optional<Guild> op = repo.findById(id);
 
