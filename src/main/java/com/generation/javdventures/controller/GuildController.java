@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.generation.jadventures.entities.Guild;
 import com.generation.jadventures.model.dto.guild.GuildDtoBase;
+import com.generation.jadventures.model.dto.guild.GuildDtoWQuest;
 import com.generation.jadventures.model.repositories.GuildRepository;
 import com.generation.jadventures.model.service.GuildConverter;
 
@@ -24,7 +25,8 @@ public class GuildController {
     GuildConverter conv;
    
     @GetMapping("/guilds")
-    public List<Guild> getAll() {
+    public List<Guild> getAll() 
+    {
         return repo.findAll();
     }
 
@@ -36,7 +38,7 @@ public class GuildController {
         if(op.isEmpty())
             return null;
 
-            return conv.GuildWNoQuest(op.get());
+        return conv.guildToDtoR(op.get());
     }
 
 
@@ -48,7 +50,7 @@ public class GuildController {
         if(op.isEmpty())
             return null;
 
-            return conv.guildWQuest(op.get()); 
+        return conv.guildToDtoWQuest(op.get()); 
     }
 
 }
