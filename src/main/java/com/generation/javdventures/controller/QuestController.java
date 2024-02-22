@@ -23,27 +23,27 @@ public class QuestController {
     @Autowired
     QuestConverter conv;
 
-    @GetMapping("/quest")
+    @GetMapping("/quests")
     public List<Quest> getAll()
     {
         return repo.findAll().stream().map(d -> conv.quest(d)).toList();
     }
 
-    @PostMapping("/quest")
+    @PostMapping("/quests")
     public Quest insert (@RequestBody QuestDtoRpost dto)
     {
         Quest d = conv.dtoRpostToQuest(dto);
         return conv.quest(repo.save(d));
     }
 
-    @PutMapping("/quest")
+    @PutMapping("/quests")
     public Quest update(@RequestBody QuestDtoRput dto)
     {
         Quest d = conv.dtoRputToQuest(dto);
         return conv.quest(repo.save(d));
     }
 
-    @PutMapping("/quest/{id}")
+    @PutMapping("/quests/{id}")
     public Quest updateWithId(@RequestBody QuestDtoRput dto,@PathVariable Integer id)
     {
         dto.setId(id);
@@ -51,7 +51,7 @@ public class QuestController {
         return conv.quest(repo.save(d));
     }
 
-    @DeleteMapping("/quest/{id}")
+    @DeleteMapping("/quests/{id}")
     public void deleteQuest(@PathVariable Integer id)
     {
         repo.deleteById(id);
