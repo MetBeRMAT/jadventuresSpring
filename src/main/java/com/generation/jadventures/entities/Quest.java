@@ -46,6 +46,8 @@ public class Quest
     @JoinColumn(name = "guild_id")
     private Guild guild;
 
+    
+
 
 
 
