@@ -1,5 +1,6 @@
 package com.generation.jadventures.model.service;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.generation.jadventures.entities.Adventurer;
@@ -53,4 +54,3 @@ public class AdventurerConverter
 }
    
 
-    
