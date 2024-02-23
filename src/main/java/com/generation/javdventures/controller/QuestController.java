@@ -16,8 +16,6 @@ import com.generation.jadventures.entities.Guild;
 import com.generation.jadventures.entities.Quest;
 import com.generation.jadventures.model.dto.quest.QuestDtoBase;
 import com.generation.jadventures.model.dto.quest.QuestDtoR;
-import com.generation.jadventures.model.dto.quest.QuestDtoRpost;
-import com.generation.jadventures.model.dto.quest.QuestDtoRput;
 import com.generation.jadventures.model.repositories.GuildRepository;
 import com.generation.jadventures.model.repositories.QuestRepository;
 import com.generation.jadventures.model.service.GuildConverter;
@@ -40,21 +38,21 @@ public class QuestController {
     }
 
     @PostMapping("/quests")
-    public QuestDtoR insert (@RequestBody QuestDtoRpost dto)
+    public QuestDtoR insert (@RequestBody QuestDtoR dto)
     {
         Quest q = conv.dtoRpostToQuest(dto);
         return conv.questToDtoR(repo.save(q));
     }
 
     @PutMapping("/quests")
-    public QuestDtoR updateQuest(@RequestBody QuestDtoRput dto)
+    public QuestDtoR updateQuest(@RequestBody QuestDtoR dto)
     {
         Quest q = conv.dtoRputToQuest(dto);
         return conv.questToDtoR(repo.save(q));
     }
 
     @PutMapping("/quests/{id}")
-    public QuestDtoR updateWithId(@RequestBody QuestDtoRput dto,@PathVariable Integer id)
+    public QuestDtoR updateWithId(@RequestBody QuestDtoR dto,@PathVariable Integer id)
     {
         
         Quest q = conv.dtoRputToQuest(dto);

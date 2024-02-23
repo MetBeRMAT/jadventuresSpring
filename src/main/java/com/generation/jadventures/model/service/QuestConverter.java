@@ -6,8 +6,6 @@ import com.generation.jadventures.entities.Guild;
 import com.generation.jadventures.entities.Quest;
 import com.generation.jadventures.model.dto.quest.QuestDtoBase;
 import com.generation.jadventures.model.dto.quest.QuestDtoR;
-import com.generation.jadventures.model.dto.quest.QuestDtoRpost;
-import com.generation.jadventures.model.dto.quest.QuestDtoRput;
 import com.generation.jadventures.model.repositories.GuildRepository;
 import com.generation.jadventures.model.repositories.QuestRepository;
 
@@ -54,7 +52,7 @@ public class QuestConverter
 
 
     }
-public Quest dtoRpostToQuest (QuestDtoRpost dto)
+public Quest dtoRpostToQuest (QuestDtoR dto)
     {
         Guild g = gRepo.findById(dto.getGuild_id()).get();
         return  Quest
@@ -73,7 +71,7 @@ public Quest dtoRpostToQuest (QuestDtoRpost dto)
 
     }
 
-    public Quest dtoRputToQuest (QuestDtoRput dto)
+    public Quest dtoRputToQuest (QuestDtoR dto)
     {   
         Guild g = gRepo.findById(dto.getGuild_id()).get();
         return 
