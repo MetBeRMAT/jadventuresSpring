@@ -28,7 +28,7 @@ import lombok.experimental.SuperBuilder;
 public class Adventurer 
 {
     @Id
-   @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private String name, surname;

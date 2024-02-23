@@ -8,7 +8,7 @@ import lombok.experimental.SuperBuilder;
 @Data
 @AllArgsConstructor
 
-public class AdventurerDtoR 
+public class AdventurerDtoR extends AdventurerDtoBase
 {
     public AdventurerDtoR(){}
     private Integer id;

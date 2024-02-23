@@ -9,5 +9,6 @@ import lombok.experimental.SuperBuilder;
 public class AdventurerDtoRpost extends AdventurerDtoBase
 {
     public AdventurerDtoRpost(){}
+    private Integer id;
     private Integer party_id;
 }
