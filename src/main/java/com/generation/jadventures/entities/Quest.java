@@ -27,8 +27,8 @@ import lombok.experimental.SuperBuilder;
 
 public class Quest 
 {
-   @Id
-   @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private LocalDate date_created;
@@ -44,7 +44,11 @@ public class Quest
     @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "guild_id")
-    private Guild guild;
+    private Guild patron;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "party_id", fetch = FetchType.EAGER)
+    private Party questOfParty;
 
     
 

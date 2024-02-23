@@ -12,13 +12,12 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.generation.jadventures.entities.Guild;
 import com.generation.jadventures.entities.Quest;
-import com.generation.jadventures.model.dto.quest.QuestDtoBase;
 import com.generation.jadventures.model.dto.quest.QuestDtoR;
-import com.generation.jadventures.model.repositories.GuildRepository;
+import com.generation.jadventures.model.dto.quest.QuestDtoWNoPatron;
+import com.generation.jadventures.model.dto.quest.QuestDtoWQuestOfParty;
+import com.generation.jadventures.model.dto.quest.QuestDtoWWithPatron;
 import com.generation.jadventures.model.repositories.QuestRepository;
-import com.generation.jadventures.model.service.GuildConverter;
 import com.generation.jadventures.model.service.QuestConverter;
 
 @RestController
@@ -28,37 +27,53 @@ public class QuestController {
     QuestRepository repo;
     @Autowired
     QuestConverter conv;
-    @Autowired
-    GuildRepository gRepo;
 
     @GetMapping("/quests")
-    public List<QuestDtoBase> getAll()
+    public List<QuestDtoWNoPatron> getAll()
     {
-        return repo.findAll().stream().map(d -> conv.questToDtoBase(d)).toList();
+        return repo.findAll().stream().map(d -> conv.questToDtoWNoPatron(d)).toList();
+    }
+
+    @GetMapping("/quests/{id}")
+    public QuestDtoWNoPatron getOneWithNoGuild(@PathVariable Integer id)
+    {
+        return conv.questToDtoWNoPatron(repo.findById(id).get());
+    }
+
+    @GetMapping("/quests/{id}/p")
+    public QuestDtoWWithPatron getOneWithGuild(@PathVariable Integer id)
+    {
+        return conv.questToDtoWWithPatron(repo.findById(id).get());
+    }
+
+    @GetMapping("/quests/{id}/p")
+    public QuestDtoWQuestOfParty getOneWithQuestOfParty(@PathVariable Integer id)
+    {
+        return conv.questToDtoWQuestOfParty(repo.findById(id).get());
     }
 
     @PostMapping("/quests")
-    public QuestDtoR insert (@RequestBody QuestDtoR dto)
+    public QuestDtoWWithPatron insert (@RequestBody QuestDtoR dto)
     {
-        Quest q = conv.dtoRpostToQuest(dto);
-        return conv.questToDtoR(repo.save(q));
+        Quest q = conv.DtoRToQuest(dto);
+        return conv.questToDtoWWithPatron(repo.save(q));
     }
 
     @PutMapping("/quests")
-    public QuestDtoR updateQuest(@RequestBody QuestDtoR dto)
+    public QuestDtoWWithPatron updateQuest(@RequestBody QuestDtoR dto)
     {
-        Quest q = conv.dtoRputToQuest(dto);
-        return conv.questToDtoR(repo.save(q));
+        Quest q = conv.DtoRToQuest(dto);
+        return conv.questToDtoWWithPatron(repo.save(q));
     }
 
     @PutMapping("/quests/{id}")
-    public QuestDtoR updateWithId(@RequestBody QuestDtoR dto,@PathVariable Integer id)
+    public QuestDtoWWithPatron updateWithId(@RequestBody QuestDtoR dto,@PathVariable Integer id)
     {
         
-        Quest q = conv.dtoRputToQuest(dto);
+        Quest q = conv.DtoRToQuest(dto);
         q.setId(id);
         
-        return conv.questToDtoR(repo.save(q));
+        return conv.questToDtoWWithPatron(repo.save(q));
     }
 
     @DeleteMapping("/quests/{id}")
