@@ -37,7 +37,8 @@ public class Guild
     private int n_employees;
     private String hq_address;
 
-    @OneToMany(mappedBy = "guild", fetch = FetchType.EAGER)
+    @JsonIgnore
+    @OneToMany(mappedBy = "patron", fetch = FetchType.EAGER)
     private List<Quest> posted_quests;
 
   

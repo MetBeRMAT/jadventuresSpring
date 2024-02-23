@@ -28,7 +28,7 @@ import lombok.experimental.SuperBuilder;
 public class Party 
 {
     @Id
-   @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private String name;
@@ -41,11 +41,11 @@ public class Party
     private Adventurer party_leader;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "party", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "questOfParty", fetch = FetchType.EAGER)
     private List<Quest> quests;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "adventurer", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "party", fetch = FetchType.EAGER)
     private List<Adventurer> adventurers;
 
 

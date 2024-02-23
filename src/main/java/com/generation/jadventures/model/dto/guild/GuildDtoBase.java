@@ -13,8 +13,6 @@ import lombok.experimental.SuperBuilder;
 public class GuildDtoBase 
 {
     private String name;
-    private String authentication_seal;
-    private String seal_img_url;
     private int n_employees;
     private String hq_address;
 }
