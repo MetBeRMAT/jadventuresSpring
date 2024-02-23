@@ -40,13 +40,13 @@ public class QuestController {
         return conv.questToDtoWNoPatron(repo.findById(id).get());
     }
 
-    @GetMapping("/quests/{id}/p")
+    @GetMapping("/quests/{id}/patron")
     public QuestDtoWWithPatron getOneWithGuild(@PathVariable Integer id)
     {
         return conv.questToDtoWWithPatron(repo.findById(id).get());
     }
 
-    @GetMapping("/quests/{id}/p")
+    @GetMapping("/quests/{id}/questofparty")
     public QuestDtoWQuestOfParty getOneWithQuestOfParty(@PathVariable Integer id)
     {
         return conv.questToDtoWQuestOfParty(repo.findById(id).get());

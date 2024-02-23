@@ -10,7 +10,6 @@ import lombok.experimental.SuperBuilder;
 
 public class PartyDtoWQuest extends PartyDtoBase
 {
-    public PartyDtoWQuest(){}
     private Integer id;
     private List<Quest> quests;
 }

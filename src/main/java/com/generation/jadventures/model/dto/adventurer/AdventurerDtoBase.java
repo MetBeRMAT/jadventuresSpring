@@ -11,8 +11,6 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-
-
 public class AdventurerDtoBase 
 {
     private String name, surname;

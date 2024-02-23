@@ -13,7 +13,6 @@ import lombok.experimental.SuperBuilder;
 
 public class PartyDtoWAdventurer extends PartyDtoBase
 {
-    public PartyDtoWAdventurer(){}
     private Integer id;
     private List<Adventurer> adventurers;
     private Adventurer party_leader;

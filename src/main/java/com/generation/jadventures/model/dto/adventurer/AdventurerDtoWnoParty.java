@@ -8,7 +8,7 @@ import lombok.experimental.SuperBuilder;
 @Data
 @AllArgsConstructor
 
-public class AdventurerDtoWnoParty  extends AdventurerDtoBase
+public class AdventurerDtoWnoParty extends AdventurerDtoBase
 {
     private Integer id;
 }
