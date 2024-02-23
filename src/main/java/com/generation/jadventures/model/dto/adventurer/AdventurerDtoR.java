@@ -10,6 +10,6 @@ import lombok.experimental.SuperBuilder;
 
 public class AdventurerDtoR extends AdventurerDtoBase
 {
-    public AdventurerDtoR(){}
+    public AdventurerDtoR(){};
     private Integer id;
 }

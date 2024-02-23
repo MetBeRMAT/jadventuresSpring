@@ -7,7 +7,7 @@ import com.generation.jadventures.entities.Party;
 import com.generation.jadventures.model.dto.party.PartyDtoR;
 import com.generation.jadventures.model.dto.party.PartyDtoWAdventurer;
 import com.generation.jadventures.model.dto.party.PartyDtoWQuest;
-import com.generation.jadventures.model.dto.party.PartyDtoWnoAdventurer;
+import com.generation.jadventures.model.dto.party.PartyDtoWWithPartyLeaderAndNoAdventures;
 import com.generation.jadventures.model.dto.party.PartyDtoWnoQuest;
 import com.generation.jadventures.model.repositories.PartyRepository;
 
@@ -16,9 +16,7 @@ public class PartyConverter
     @Autowired
     PartyRepository pRepo;
 
-   
-
-    public Party partyToDtoR (PartyDtoR p)
+    public Party DtoRToParty (PartyDtoR p)
     {
         return  Party
                 .builder()
@@ -37,6 +35,8 @@ public class PartyConverter
                 .name(p.getName())
                 .authentication_seal(p.getAuthentication_seal())
                 .motto(p.getMotto())
+                .adventurers(p.getAdventurers())
+                .party_leader(p.getParty_leader())
                 .build();
     }
 
@@ -48,17 +48,19 @@ public class PartyConverter
                 .name(p.getName())
                 .authentication_seal(p.getAuthentication_seal())
                 .motto(p.getMotto())
+                .quests(p.getQuests())
                 .build();
     }
 
-    public PartyDtoWnoAdventurer partyDtoWnoAdventurer (Party p)
+    public PartyDtoWWithPartyLeaderAndNoAdventures partyDtoWWithPartyLeaderAndNoAdventures (Party p)
     {
-        return  PartyDtoWnoAdventurer
+        return  PartyDtoWWithPartyLeaderAndNoAdventures
                 .builder()
                 .id(p.getId())
                 .name(p.getName())
                 .authentication_seal(p.getAuthentication_seal())
                 .motto(p.getMotto())
+                .party_leader(p.getParty_leader())
                 .build();
                 
     }

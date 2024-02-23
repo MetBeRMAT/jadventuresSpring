@@ -1,18 +1,19 @@
 package com.generation.javdventures.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.generation.jadventures.entities.Adventurer;
-import com.generation.jadventures.model.dto.adventurer.AdventurerDtoBase;
 import com.generation.jadventures.model.dto.adventurer.AdventurerDtoR;
+import com.generation.jadventures.model.dto.adventurer.AdventurerDtoWParty;
+import com.generation.jadventures.model.dto.adventurer.AdventurerDtoWnoParty;
 import com.generation.jadventures.model.repositories.AdventurerRepository;
 import com.generation.jadventures.model.service.AdventurerConverter;
 
@@ -24,37 +25,44 @@ public class AdventurerController
     AdventurerConverter conv;
 
     @GetMapping("/adventurers")
-    public List<Adventurer> getAll()
+    public List<AdventurerDtoWnoParty> getAll()
     {
-        return repo.findAll();
+        return repo.findAll().stream().map(a -> conv.adventurertoDtoWnoParty(a)).toList();
     }
 
-   @GetMapping("/adventurers/{id}")
-    public AdventurerDtoBase getOne(@PathVariable Integer id)
+    @GetMapping("/adventurers/{id}")
+    public AdventurerDtoWnoParty getOne(@PathVariable Integer id)
     {
-        Optional<Adventurer> op = repo.findById(id);
+        return conv.adventurertoDtoWnoParty(repo.findById(id).get());
+    }
 
-        if(op.isEmpty())
-            return null;
-
-        return conv.AdventurerToDtoR(op.get());
+    @GetMapping("/adventurers/{id}/party")
+    public AdventurerDtoWParty getOneWithParty(@PathVariable Integer id)
+    {
+        return conv.adventurertoDtoWParty(repo.findById(id).get());
     }
 
     @PutMapping("/adventurers")
-    public AdventurerDtoR updateAdventurer(@RequestBody AdventurerDtoR dto)
+    public AdventurerDtoWParty updateAdventurer(@RequestBody AdventurerDtoR dto)
     {
-        Adventurer a = conv.dtoRputToAdventurer(dto);
-        return conv.adventurerToDtoR(repo.save(a));
+        Adventurer a = conv.DtoRToAdventurer(dto);
+        return conv.adventurertoDtoWParty(repo.save(a));
     }
 
-    @PutMapping("/parties/{id}")
-    public AdventurerDtoR updateWithId(@RequestBody AdventurerDtoR dto,@PathVariable Integer id)
+    @PutMapping("/adventurers/{id}")
+    public AdventurerDtoWParty updateWithId(@RequestBody AdventurerDtoR dto,@PathVariable Integer id)
     {
         
-        Adventurer a = conv.dtoRputToAdventurer(dto);
+        Adventurer a = conv.DtoRToAdventurer(dto);
         a.setId(id);
-        
-        return conv.adventurerToDtoR(repo.save(a));
+        return conv.adventurertoDtoWParty(repo.save(a));
+    }
+
+    @PostMapping("/adventurers")
+    public AdventurerDtoWParty insert(@RequestBody AdventurerDtoR dto)
+    {
+        Adventurer a = conv.DtoRToAdventurer(dto);
+        return conv.adventurertoDtoWParty(repo.save(a));
     }
 
     @DeleteMapping("/adventurers/{id}")

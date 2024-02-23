@@ -1,5 +1,7 @@
 package com.generation.jadventures.model.dto.party;
 
+import com.generation.jadventures.entities.Adventurer;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.experimental.SuperBuilder;
@@ -8,7 +10,8 @@ import lombok.experimental.SuperBuilder;
 @Data
 @AllArgsConstructor
 
-public class PartyDtoWnoAdventurer extends PartyDtoBase
+public class PartyDtoWWithPartyLeaderAndNoAdventures extends PartyDtoBase
 {
     private Integer id;
+    private Adventurer party_leader;
 }
