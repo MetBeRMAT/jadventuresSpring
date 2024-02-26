@@ -1,9 +1,11 @@
 package com.generation.jadventures.model.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.generation.jadventures.entities.Quest;
 import com.generation.jadventures.model.dto.quest.QuestDtoR;
+import com.generation.jadventures.model.dto.quest.QuestDtoWAwaiting;
 import com.generation.jadventures.model.dto.quest.QuestDtoWNoPatron;
 import com.generation.jadventures.model.dto.quest.QuestDtoWNoQuestOfParty;
 import com.generation.jadventures.model.dto.quest.QuestDtoWQuestOfParty;
@@ -11,6 +13,7 @@ import com.generation.jadventures.model.dto.quest.QuestDtoWWithPatron;
 import com.generation.jadventures.model.repositories.GuildRepository;
 import com.generation.jadventures.model.repositories.QuestRepository;
 
+@Service
 public class QuestConverter 
 {
     @Autowired
@@ -105,5 +108,24 @@ public class QuestConverter
                 .questOfParty(q.getQuestOfParty())
                 .build();
     }
+
+    public QuestDtoWAwaiting questToDtoWAwaiting (Quest q)
+    {
+        return  QuestDtoWAwaiting
+                .builder()
+                .id(q.getId())
+                .date_created(q.getDate_created())
+                .status(q.getStatus())
+                .rank(q.getRank())
+                .reward(q.getReward())
+                .area(q.getArea())
+                .date_completed(q.getDate_completed())
+                .map_url(q.getMap_url())
+                .description(q.getDescription())
+                .type(q.getType())
+                .patron(q.getPatron())
+                .build();
+    }
+
 }
 //gaetanodaje
