@@ -81,5 +81,4 @@ public class QuestController {
     {
         repo.deleteById(id);
     }
-
 }
