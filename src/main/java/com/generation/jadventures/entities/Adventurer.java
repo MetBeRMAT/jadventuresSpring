@@ -36,7 +36,7 @@ public class Adventurer
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "party_id")
+    @JoinColumn(name = "myparty_id")
     private Party party;
 
 }

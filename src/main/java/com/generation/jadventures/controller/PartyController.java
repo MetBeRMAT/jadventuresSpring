@@ -1,4 +1,4 @@
-package com.generation.javdventures.controller;
+package com.generation.jadventures.controller;
 
 import java.util.List;
 
@@ -22,8 +22,6 @@ import com.generation.jadventures.model.repositories.PartyRepository;
 import com.generation.jadventures.model.service.PartyConverter;
 
 @RestController
-@CrossOrigin
-
 public class PartyController 
 {
     @Autowired

@@ -38,7 +38,4 @@ public class Guild
     @OneToMany(mappedBy = "patron", fetch = FetchType.EAGER)
     private List<Quest> posted_quests;
 
-  
-
-
 }

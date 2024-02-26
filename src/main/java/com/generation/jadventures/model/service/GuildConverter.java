@@ -1,6 +1,7 @@
 package com.generation.jadventures.model.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.generation.jadventures.entities.Guild;
 import com.generation.jadventures.model.dto.guild.GuildDtoR;
@@ -8,6 +9,7 @@ import com.generation.jadventures.model.dto.guild.GuildDtoWNoQuest;
 import com.generation.jadventures.model.dto.guild.GuildDtoWQuest;
 import com.generation.jadventures.model.repositories.GuildRepository;
 
+@Service
 public class GuildConverter 
 {
     @Autowired

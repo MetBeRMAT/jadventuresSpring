@@ -1,4 +1,4 @@
-package com.generation.javdventures.controller;
+package com.generation.jadventures.controller;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,8 +19,6 @@ import com.generation.jadventures.model.repositories.GuildRepository;
 import com.generation.jadventures.model.service.GuildConverter;
 
 @RestController
-@CrossOrigin
- //Un commentio2
 public class GuildController 
 {
     @Autowired
@@ -29,9 +27,9 @@ public class GuildController
     GuildConverter conv;
    
     @GetMapping("/guilds")
-    public List<GuildDtoWNoQuest> getAll() 
+    public List<GuildDtoWQuest> getAll() 
     {
-        return repo.findAll().stream().map(g -> conv.guildToDtoWNoQuest(g)).toList();
+        return repo.findAll().stream().map(g -> conv.guildToDtoWQuest(g)).toList();
     }
 
     @GetMapping("/guilds/{id}")
