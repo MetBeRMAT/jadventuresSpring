@@ -38,5 +38,4 @@ public class Adventurer
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "myparty_id")
     private Party party;
-
 }

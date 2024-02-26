@@ -22,6 +22,10 @@ import com.generation.jadventures.model.repositories.PartyRepository;
 import com.generation.jadventures.model.service.PartyConverter;
 
 @RestController
+<<<<<<< HEAD
+=======
+
+>>>>>>> e93d1749c1d91de1f0c33c7b4f28c879ca081f02
 public class PartyController 
 {
     @Autowired

@@ -30,6 +30,7 @@ public class QuestController {
     @GetMapping("/quests")
     public List<QuestDtoWNoPatron> getAll()
     {
+        
         return repo.findAll().stream().map(d -> conv.questToDtoWNoPatron(d)).toList();
     }
 
@@ -80,5 +81,4 @@ public class QuestController {
     {
         repo.deleteById(id);
     }
-
 }
