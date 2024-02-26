@@ -1,4 +1,4 @@
-package com.generation.javdventures.controller;
+package com.generation.jadventures.controller;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,7 +20,6 @@ import com.generation.jadventures.model.repositories.GuildRepository;
 import com.generation.jadventures.model.service.GuildConverter;
 
 @RestController
-@CrossOrigin
  //Un commentio2
 public class GuildController 
 {

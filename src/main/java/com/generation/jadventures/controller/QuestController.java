@@ -1,4 +1,4 @@
-package com.generation.javdventures.controller;
+package com.generation.jadventures.controller;
 
 import java.util.List;
 
@@ -21,7 +21,6 @@ import com.generation.jadventures.model.repositories.QuestRepository;
 import com.generation.jadventures.model.service.QuestConverter;
 
 @RestController
-@CrossOrigin
 public class QuestController {
     @Autowired
     QuestRepository repo;
@@ -31,6 +30,7 @@ public class QuestController {
     @GetMapping("/quests")
     public List<QuestDtoWNoPatron> getAll()
     {
+        
         return repo.findAll().stream().map(d -> conv.questToDtoWNoPatron(d)).toList();
     }
 

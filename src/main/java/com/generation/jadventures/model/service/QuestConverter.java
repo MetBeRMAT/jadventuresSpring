@@ -1,6 +1,7 @@
 package com.generation.jadventures.model.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.generation.jadventures.entities.Quest;
 import com.generation.jadventures.model.dto.quest.QuestDtoR;
@@ -12,6 +13,7 @@ import com.generation.jadventures.model.dto.quest.QuestDtoWWithPatron;
 import com.generation.jadventures.model.repositories.GuildRepository;
 import com.generation.jadventures.model.repositories.QuestRepository;
 
+@Service
 public class QuestConverter 
 {
     @Autowired

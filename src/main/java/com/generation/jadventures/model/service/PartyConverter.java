@@ -2,6 +2,7 @@ package com.generation.jadventures.model.service;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.generation.jadventures.entities.Party;
 import com.generation.jadventures.model.dto.party.PartyDtoR;
@@ -11,6 +12,7 @@ import com.generation.jadventures.model.dto.party.PartyDtoWWithPartyLeaderAndNoA
 import com.generation.jadventures.model.dto.party.PartyDtoWnoQuest;
 import com.generation.jadventures.model.repositories.PartyRepository;
 
+@Service
 public class PartyConverter 
 {
     @Autowired
